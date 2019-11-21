@@ -10,10 +10,12 @@ public class FeiHiController {
     @Autowired
     FeiHiService hiService;
 
+    //正常的 controller 访问方式
     @RequestMapping("/hello-client")
     public String sayHello(@RequestParam(value = "name") String name){
         StringBuffer buffer = new StringBuffer();
         buffer.append("名字是:").append(name);
+        //调用了远程的微服务
         String word = hiService.sayHi(buffer.toString());
         return word;
     }

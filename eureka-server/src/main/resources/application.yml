@@ -2,12 +2,12 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost   #http://localhost:8761/ 这个是注册中心管理界面访问地址
   client:
     registerWithEureka: false   #声明不提供服务
-    fetchRegistry: false   #声明不应用服务
+    fetchRegistry: false        #声明不应用服务
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #这个是注册中心访问地址
 spring:
   application:
-    name: eureka-server
+    name: eureka-server #注册中心名，没啥用

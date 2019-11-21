@@ -1,9 +1,9 @@
 server:
-  port: 8763
+  port: 8763  #服务的端口号 如果启动好几个服务集群，要修改成不同的
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/  #注册中心的地址
 spring:
   application:
-    name: service-hello1
+    name: service-name  #服务名
