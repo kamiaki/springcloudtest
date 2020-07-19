@@ -10,6 +10,7 @@
         <module>client-feign</module>
         <module>eureka-server</module>
         <module>service-hello</module>
+        <module>zuultest</module>
     </modules>
 
     <parent>

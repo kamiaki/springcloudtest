@@ -14,7 +14,7 @@ public class FeiHiController {
     @RequestMapping("/hello-client")
     public String sayHello(@RequestParam(value = "name") String name){
         StringBuffer buffer = new StringBuffer();
-        buffer.append("名字是:").append(name);
+        buffer.append(name);
         //调用了远程的微服务
         String word = hiService.sayHi(buffer.toString());
         return word;
