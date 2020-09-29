@@ -1,18 +1,22 @@
 server:
   port: 9000
-spring:
-  application:
-    name: zuul-gateway		#Zuul网关在Eureka的服务名称，随便取
-    #http://localhost:9000/client-feign/hello-client?name=aaaa 用这个访问
+# 如果eureka端口号是8761 都不用配置网关直接能找到eureka
+# 如果客户端发生变化，需要重启网关
+# 没配置routes 用这个访问 http://localhost:9000/client-feign/hello-client?name=aaaa
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8769/eureka
+spring:
+  application:
+    name: zuul-gateway		#Zuul网关在Eureka的服务名称，随便取
+
+
+#配置了routes用这个 http://localhost:9000/tou/zidingyi/hello-client?name=aaaa
 zuul:
   routes:
     zidingyi:
       service-id: client-feign
       path: /zidingyi/**
-      #http://localhost:9000/zidingyi/hello-client?name=aaaa 配置了routes用这个
-  ignored-services: '*' #用为服务的名称就访问不了了
-  prefix: /tou  #加一个统一的头 http://localhost:9000/tou/zidingyi/hello-client?name=aaaa
+  ignored-services: '*'     # 用为服务的名称就访问不了了,以此做限制直接访问微服务
+  prefix: /tou

@@ -13,16 +13,31 @@ import javax.servlet.http.HttpServletRequest;
 public class MyZuulFilter extends ZuulFilter {
     private final Logger LOGGER = LoggerFactory.getLogger(MyZuulFilter.class);
 
+    /**
+     * 在什么时候过滤
+     *  //pre之前 post之后
+     * @return
+     */
     @Override
     public String filterType() {
-        return "pre";  //pre之前 post之后
+        return "pre";
     }
 
+    /**
+     * 可以写好几个类似这样的过滤器，通过这个数字判断顺序
+     * 数字越大，优先级越靠后
+     * @return
+     */
     @Override
     public int filterOrder() {
         return 0;
     }
 
+    /**
+     * 这里可以写根据什么条件进行过滤
+     * 认证成功直接就过去了
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
         RequestContext currentContext = RequestContext.getCurrentContext();
@@ -32,6 +47,11 @@ public class MyZuulFilter extends ZuulFilter {
         return flag;
     }
 
+    /**
+     * 被拦住了，就来这里喝茶
+     * @return
+     * @throws ZuulException
+     */
     @Override
     public Object run() throws ZuulException {
         LOGGER.info("shouldFilter = true 要过滤");
