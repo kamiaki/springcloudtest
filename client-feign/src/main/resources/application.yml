@@ -6,7 +6,7 @@ eureka:
       defaultZone: http://localhost:8769/eureka
 spring:
   application:
-    name: client-feign
+    name: aki-client-feign
 feign:
   hystrix:
     enabled: true

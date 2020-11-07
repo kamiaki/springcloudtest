@@ -16,7 +16,7 @@ spring:
 zuul:
   routes:
     zidingyi:
-      service-id: client-feign
+      service-id: aki-client-feign  # 需要路由过去的，client 微服务的名字
       path: /zidingyi/**
-  ignored-services: '*'     # 用为服务的名称就访问不了了,以此做限制直接访问微服务
+  ignored-services: '*'     # 表示禁用默认路由，只认我们自己配置的路由. 就是说上面那个路由就不行了
   prefix: /tou
