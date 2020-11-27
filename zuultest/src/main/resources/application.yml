@@ -2,7 +2,10 @@ server:
   port: 80
 # 如果eureka端口号是8761 都不用配置网关直接能找到eureka
 # 如果客户端发生变化，需要重启网关
-# 没配置routes 用这个访问 http://localhost:9000/client-feign/hello-client?name=aaaa
+# 没配置routes 用这个访问 http://localhost:80/aki-client-feign/hello-client?name=aaaa
+# 80 这个是本网关设置的端口
+# aki-client-feign 这个是路由过去的feign spring application name: aki-client-feign设置的名字
+# hello-client?name=aaaa 这个是方法名 和 参数名
 eureka:
   client:
     service-url:
@@ -12,7 +15,11 @@ spring:
     name: zuul-gateway		#Zuul网关在Eureka的服务名称，随便取
 
 
-#配置了routes用这个 http://localhost:9000/tou/zidingyi/hello-client?name=aaaa
+# 配置了routes用这个 http://localhost:80/tou/zidingyi/hello-client?name=aaaa
+# 80 端口
+# tou 是prefix
+# zidingyi 是path
+# hello-client?name=aaaa 方法
 zuul:
   routes:
     zidingyi:
