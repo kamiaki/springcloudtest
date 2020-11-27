@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 80
 # 如果eureka端口号是8761 都不用配置网关直接能找到eureka
 # 如果客户端发生变化，需要重启网关
 # 没配置routes 用这个访问 http://localhost:9000/client-feign/hello-client?name=aaaa

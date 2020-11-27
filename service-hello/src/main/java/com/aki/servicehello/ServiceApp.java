@@ -18,7 +18,7 @@ public class ServiceApp {
     @RequestMapping("/hello")
     public String hello(@RequestParam(value = "name") String name) { //如果参数为实体类用: @RequestBody  1.如果直接 访问时需使用application/json 格式访问
 //        //模仿超时异常，熔断
-        if ("aaaa".equals(name)){
+        if ("aaaa".equals(name) || "bbbb".equals(name)){
             System.out.println("熔断熔断熔断熔断");
             System.out.println("熔断熔断熔断熔断");
             throw new RuntimeException(); //抛出熔断异常
@@ -28,6 +28,11 @@ public class ServiceApp {
     }
 
     public String errorMsg(@RequestParam(value = "name") String name){
+        if ("bbbb".equals(name)){
+            System.out.println("客户端降级降级降级降级降级");
+            System.out.println("客户端降级降级降级降级降级");
+            throw new RuntimeException(); // 客户端降级了
+        }
         return "容断了,入参:" + name;
     }
 }

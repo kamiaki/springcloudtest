@@ -16,9 +16,9 @@ public class FeiHiController {
 
     //正常的 controller 访问方式
     @RequestMapping("/hello-client")
-    public String sayHello(@RequestParam(value = "name") String name){
+    public String sayHello(@RequestParam(value = "name") String name) {
         StringBuffer buffer = new StringBuffer();
-        name = port + name;
+//        name = port + name;
         buffer.append(name);
         //调用了远程的微服务
         String word = hiService.sayHi(buffer.toString());
