@@ -36,6 +36,7 @@ public class MyZuulFilter extends ZuulFilter {
     /**
      * 这里可以写根据什么条件进行过滤
      * 认证成功直接就过去了
+     * shouldFilter = true 要过滤
      * @return
      */
     @Override
