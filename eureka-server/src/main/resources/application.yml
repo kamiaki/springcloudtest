@@ -3,6 +3,8 @@ server:
 eureka:
   instance:
     hostname: localhost   #http://localhost:8769/ 这个是注册中心管理界面访问地址
+  server:
+    enable-self-preservation: false #关闭无心跳包保护机制
   client:
     registerWithEureka: false   #声明不提供服务
     fetchRegistry: false        #声明不应用服务
