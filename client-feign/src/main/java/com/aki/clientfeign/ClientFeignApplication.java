@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient //eureka
 @EnableDiscoveryClient  //eureka
-@EnableFeignClients //feign
+@EnableFeignClients(basePackages ={"com.aki.clientfeign"} ) //feign
 @EnableCircuitBreaker   //hystrix
 public class ClientFeignApplication {
 
