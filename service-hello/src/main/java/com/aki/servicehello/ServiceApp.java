@@ -17,7 +17,7 @@ public class ServiceApp {
     @HystrixCommand(fallbackMethod = "errorMsg")//出问题熔断去找谁
     @RequestMapping("/hello")
     public String hello(@RequestParam(value = "name") String name) { //如果参数为实体类用: @RequestBody  1.如果直接 访问时需使用application/json 格式访问
-//        //模仿超时异常，熔断
+        //        //模仿超时异常，熔断
         if ("aaaa".equals(name) || "bbbb".equals(name)){
             System.out.println("熔断熔断熔断熔断");
             System.out.println("熔断熔断熔断熔断");

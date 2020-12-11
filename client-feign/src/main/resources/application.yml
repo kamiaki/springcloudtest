@@ -10,3 +10,20 @@ spring:
 feign:
   hystrix:
     enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 50000 # feign 的超时设置 与hystrix一致
+        readTimeout: 50000 # feign 的超时设置 与hystrix一致
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 50000 # hystrix 的超时设置 与feign一致
+#ribbon:
+#  ConnectTimeout: 50000 # 连接超时时间，默认为1秒，该值会被FeignClient配置connectTimeout覆盖
+#  ReadTimeout: 50000 # 读超时时间，默认为1秒，该值会被FeignClient配置readTimeout覆盖
+#  MaxAutoRetries: 1 # 最大重试次数
+
