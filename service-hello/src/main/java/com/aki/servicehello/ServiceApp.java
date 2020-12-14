@@ -21,18 +21,18 @@ public class ServiceApp {
         if ("aaaa".equals(name) || "bbbb".equals(name)){
             System.out.println("熔断熔断熔断熔断");
             System.out.println("熔断熔断熔断熔断");
-            throw new RuntimeException(); //抛出熔断异常
+            throw new RuntimeException("熔断异常的内容"); //抛出熔断异常
         }
         //2.如果通过问服务调用,则直接传入类即可
         return "hi " + name+"   "+port;
     }
 
-    public String errorMsg(@RequestParam(value = "name") String name){
+    public String errorMsg(@RequestParam(value = "name") String name, Throwable exception){
         if ("bbbb".equals(name)){
             System.out.println("客户端降级降级降级降级降级");
             System.out.println("客户端降级降级降级降级降级");
             throw new RuntimeException(); // 客户端降级了
         }
-        return "容断了,入参:" + name;
+        return "容断了,入参:" + name + "异常是:" + exception.getMessage();
     }
 }
