@@ -3,9 +3,14 @@ package com.aki.servicehello;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.FileInputStream;
+import java.util.Base64;
+import java.util.Map;
 
 @EnableEurekaClient
 @RestController
@@ -34,5 +39,24 @@ public class ServiceApp {
             throw new RuntimeException(); // 客户端降级了
         }
         return "容断了,入参:" + name + "异常是:" + exception.getMessage();
+    }
+
+
+    @RequestMapping(value = "/test2")
+    public String test2() {
+        byte[] bytes = null;
+        try (FileInputStream fileInputStream = new FileInputStream("d:\\test.png")) {
+            bytes = new byte[fileInputStream.available()];
+            fileInputStream.read(bytes, 0, fileInputStream.available());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String encoded = Base64.getEncoder().encodeToString(bytes);
+        return encoded;
+    }
+
+    @RequestMapping(value = "/testmap")
+    public String testmap(@RequestBody Map map) {
+        return map.toString();
     }
 }
