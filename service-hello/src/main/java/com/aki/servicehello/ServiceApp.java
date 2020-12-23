@@ -47,7 +47,7 @@ public class ServiceApp {
     public String test2() {
         byte[] bytes = null;
         try (FileInputStream fileInputStream = new FileInputStream("d:\\test.png")) {
-            // 方法1 不推荐 因为可能会丢包
+            // 方法1 不推荐 因为可能会丢包 取的是最后一包数据
             bytes = new byte[fileInputStream.available()];
             fileInputStream.read(bytes, 0, fileInputStream.available());
             // 推荐的方法
