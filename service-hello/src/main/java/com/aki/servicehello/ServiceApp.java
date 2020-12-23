@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.util.Base64;
 import java.util.Map;
@@ -46,8 +47,17 @@ public class ServiceApp {
     public String test2() {
         byte[] bytes = null;
         try (FileInputStream fileInputStream = new FileInputStream("d:\\test.png")) {
+            // 方法1 不推荐 因为可能会丢包
             bytes = new byte[fileInputStream.available()];
             fileInputStream.read(bytes, 0, fileInputStream.available());
+            // 推荐的方法
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            int len;
+            byte[] bytes2 = new byte[1024];
+            while ((len = fileInputStream.read(bytes2)) != -1) {
+                output.write(bytes2, 0, len);
+            }
+            bytes = output.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
         }
