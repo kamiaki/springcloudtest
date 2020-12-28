@@ -4,6 +4,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8769/eureka
+  #spring cloud：服务注册时，设置使用ip注册，而不是主机名
+  instance:
+    preferIpAddress: true
+
 spring:
   application:
     name: aki-client-feign
