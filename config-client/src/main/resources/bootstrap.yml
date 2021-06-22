@@ -1,7 +1,27 @@
+# 用ip port找到配置中心
+#spring:
+#  cloud:
+#    config:
+#      name: provider
+#      profile: dev1   #本次访问的配置项
+#      label: master
+#      uri: http://localhost:8885
+
+# 用注册中心找到配置中心
 spring:
+  application:
+    name: client
   cloud:
     config:
+      discovery:
+        enabled: true
+        service-id: config
       name: provider
-      profile: dev1   #本次访问的配置项
       label: master
-      uri: http://localhost:8885
+      profile: dev1
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8769/eureka/
