@@ -12,6 +12,8 @@
         <module>eureka-server</module>
         <module>service-hello</module>
         <module>zuultest</module>
+        <module>config-server</module>
+        <module>config-client</module>
     </modules>
 
     <properties>

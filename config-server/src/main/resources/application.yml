@@ -1,0 +1,21 @@
+server:
+  port: 8885
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/kamiaki/configtest.git
+          username:
+          password:
+# http://localhost:8081/application-pro.yml     // 这种方式访问
+# http://localhost:8081/application/dev/master  // 这种方式也可以
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8769/eureka
+  #spring cloud：服务注册时，设置使用ip注册，而不是主机名
+  instance:
+    preferIpAddress: true

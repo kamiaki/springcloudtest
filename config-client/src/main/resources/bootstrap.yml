@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: provider
+      profile: dev1   #本次访问的配置项
+      label: master
+      uri: http://localhost:8885
