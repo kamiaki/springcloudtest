@@ -1,0 +1,11 @@
+server:
+  port: 8881
+#eureka客户端连接配置
+eureka:
+  client:
+    service-url:
+      #注册中心地址
+      defaultZone: http://localhost:8769/eureka/
+  instance:
+    #将ip注册到eureka上
+    prefer-ip-address: true
