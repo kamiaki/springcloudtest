@@ -31,7 +31,7 @@ public class FeiHiController {
         buffer.append(name);
         //调用了远程的微服务
         String word = hiService.sayHi(buffer.toString());
-        return word;
+        return word + "   client:port:" + port;
     }
 
 

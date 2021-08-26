@@ -1,0 +1,36 @@
+server:
+  port: 8778  #服务的端口号 如果启动好几个服务集群，要修改成不同的
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8769/eureka/  #注册中心的地址
+  #spring cloud：服务注册时，设置使用ip注册，而不是主机名
+  instance:
+    preferIpAddress: true
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #开启自动代理
+      # 超时
+      httpclient:
+        connect-timeout: 6000
+        response-timeout: 60s
+      # 跨域
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+            maxAge: 3628800
+      routes:
+        - id: test
+          uri: lb://aki-client-feign
+          predicates:
+            - Path=/** # 路由的前缀 这里一般只配置一个
+  application:
+    name: gateway
